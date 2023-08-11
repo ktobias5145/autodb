@@ -119,12 +119,10 @@ CONSTRAINT PK_TransmissionTypeId PRIMARY KEY(TransmissionTypeId)
 
 CREATE TABLE dbo.Gearing (
 GearingId INT IDENTITY NOT NULL,
-DriveTypeId INT,
 TransmissionTypeId INT,
 FinalDriveRation DECIMAL,
 
 CONSTRAINT PK_GearingId PRIMARY KEY (GearingId),
-CONSTRAINT FK_DriveTypeId FOREIGN KEY(DriveTypeId) REFERENCES dbo.DriveType(DriveTypeId),
 CONSTRAINT FK_TransmissionTypeId FOREIGN KEY(TransmissionTypeId) REFERENCES dbo.TransmissionType(TransmissionTypeId)
 );
 GO
@@ -137,29 +135,7 @@ CONSTRAINT PK_PowerTrainId PRIMARY KEY(PowerTrainId)
 );
 GO
 
-CREATE TABLE dbo.ProductVaration (
-ProductVarationId INT IDENTITY NOT NULL,
-VehicleId INT,
-MSRPCad DECIMAL,
-MSRPUsd DECIMAL,
-TrimLevelId INT,
-DimensionId INT,
-ExteriorId INT,
-InfotainmentId INT,
-InteriorId INT,
-PowerTrainId INT,
-GearingId INT,
 
-CONSTRAINT PK_ProductVarationId PRIMARY KEY(ProductVarationId),
-CONSTRAINT FK_VehicleId FOREIGN KEY (VehicleId) REFERENCES dbo.Vehicle (VehicleId),
-CONSTRAINT FK_TrimLevelId FOREIGN KEY(TrimLevelId) REFERENCES dbo.TrimLevel (TrimLevelId),
-CONSTRAINT FK_DimensionId FOREIGN KEY (DimensionId) REFERENCES dbo.Dimensions (DimensionsId),
-CONSTRAINT FK_ExteriorId FOREIGN KEY (ExteriorId) REFERENCES dbo.Exterior (ExteriorId),
-CONSTRAINT FK_InfotainmentId FOREIGN KEY (InfotainmentId) REFERENCES dbo.Infotainment (InfotainmentId),
-CONSTRAINT FK_InteriorId FOREIGN KEY (InteriorId) REFERENCES dbo.Interior (InteriorId),
-CONSTRAINT FK_PowerTrainId FOREIGN KEY (PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId),
-CONSTRAINT FK_GearingId FOREIGN KEY (GearingId) REFERENCES dbo.Gearing (GearingId),
-);
 
 CREATE TABLE dbo.CylinderConfig (
 CylinderConfigId INT IDENTITY NOT NULL,
@@ -177,8 +153,54 @@ CONSTRAINT PK_CompressorId PRIMARY KEY(CompressorId)
 );
 GO
 
-CREATE TABLE dbo.Ice (
-IceId INT IDENTITY NOT NULL,
+CREATE TABLE dbo.Economy (
+EconomyId INT IDENTITY NOT NULL,
+FuelGrade INT,
+MPGHighway INT,
+MPGCity INT,
+MPGCombined INT,
+LitersPerKMHighway INT,
+LitersPerKMCity INT,
+LitersPerKMCombined INT,
+TankCapacity INT,
+BatteryCapacity INT,
+VehicleRange INT,
+PowerTrainId INT,
+
+CONSTRAINT PK_EcnomyId PRIMARY KEY(EconomyId),
+CONSTRAINT FK_PowerTrainId_Economy FOREIGN KEY (PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId)
+);
+GO
+CREATE TABLE dbo.ProductVaration (
+ProductVarationId INT IDENTITY NOT NULL,
+VehicleId INT,
+MSRPCad DECIMAL,
+MSRPUsd DECIMAL,
+TrimLevelId INT,
+DimensionId INT,
+ExteriorId INT,
+InfotainmentId INT,
+InteriorId INT,
+PowerTrainId INT,
+GearingId INT,
+EconomyId INT,
+DriveTypeId INT
+
+CONSTRAINT PK_ProductVarationId PRIMARY KEY(ProductVarationId),
+CONSTRAINT FK_VehicleId FOREIGN KEY (VehicleId) REFERENCES dbo.Vehicle (VehicleId),
+CONSTRAINT FK_TrimLevelId FOREIGN KEY(TrimLevelId) REFERENCES dbo.TrimLevel (TrimLevelId),
+CONSTRAINT FK_DimensionId FOREIGN KEY (DimensionId) REFERENCES dbo.Dimensions (DimensionsId),
+CONSTRAINT FK_ExteriorId FOREIGN KEY (ExteriorId) REFERENCES dbo.Exterior (ExteriorId),
+CONSTRAINT FK_InfotainmentId FOREIGN KEY (InfotainmentId) REFERENCES dbo.Infotainment (InfotainmentId),
+CONSTRAINT FK_InteriorId FOREIGN KEY (InteriorId) REFERENCES dbo.Interior (InteriorId),
+CONSTRAINT FK_PowerTrainId FOREIGN KEY (PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId),
+CONSTRAINT FK_GearingId FOREIGN KEY (GearingId) REFERENCES dbo.Gearing (GearingId),
+CONSTRAINT FK_EconomyId FOREIGN KEY(EconomyId) REFERENCES dbo.Economy (EconomyId),
+CONSTRAINT FK_DriveTypeId FOREIGN KEY (DriveTypeId) REFERENCES dbo.DriveType(DriveTypeId),
+);
+
+CREATE TABLE dbo.Mechanical (
+MechanicalId INT IDENTITY NOT NULL,
 Horsepower DECIMAL,
 Torque DECIMAL,
 EngineSize DECIMAL,
@@ -187,97 +209,17 @@ CompressorId INT,
 AccelTime DECIMAL,
 TowingCapability DECIMAL,
 AutoStopStart BIT,
+BatteryType VARCHAR(50),
+MotorVoltage DECIMAL,
+BatteryCapacity DECIMAL,
 ProductVarationId INT,
 PowerTrainId INT,
 
-CONSTRAINT PK_IceId PRIMARY KEY(IceId),
-CONSTRAINT FK_CylinderConfigId_Ice FOREIGN KEY (CylinderConfigId) REFERENCES dbo.CylinderConfig (CylinderConfigId),
-CONSTRAINT FK_CompressorId_Ice FOREIGN KEY(CompressorId) REFERENCES dbo.Compressor (CompressorId),
-CONSTRAINT FK_ProductVarationId_Ice FOREIGN KEY(ProductVarationId) REFERENCES dbo.ProductVaration (ProductVarationId),
-CONSTRAINT FK_PowerTrainId_Ice FOREIGN KEY(PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId)
+CONSTRAINT PK_MechanicalId PRIMARY KEY(MechanicalId),
+CONSTRAINT FK_CylinderConfigId_Mechanical FOREIGN KEY (CylinderConfigId) REFERENCES dbo.CylinderConfig (CylinderConfigId),
+CONSTRAINT FK_CompressorId_Mechanical FOREIGN KEY(CompressorId) REFERENCES dbo.Compressor (CompressorId),
+CONSTRAINT FK_ProductVarationId_Mechanical FOREIGN KEY(ProductVarationId) REFERENCES dbo.ProductVaration (ProductVarationId),
+CONSTRAINT FK_PowerTrainId_Mechanical FOREIGN KEY(PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId)
 );
 GO
 
-CREATE TABLE dbo.Hybrid (
-HybridId INT IDENTITY NOT NULL,
-Horsepower DECIMAL,
-Torque DECIMAL,
-EngineSize DECIMAL,
-CylinderConfigId INT,
-CompressorId INT,
-AccelTime DECIMAL,
-TowingCapability DECIMAL,
-AutoStopStart BIT,
-ProductVarationId INT,
-PowerTrainId INT,
-
-CONSTRAINT PK_HybridId PRIMARY KEY(HybridId),
-CONSTRAINT FK_CylinderConfigId_Hybrid FOREIGN KEY (CylinderConfigId) REFERENCES dbo.CylinderConfig (CylinderConfigId),
-CONSTRAINT FK_CompressorId_Hybrid FOREIGN KEY(CompressorId) REFERENCES dbo.Compressor (CompressorId),
-CONSTRAINT FK_ProductVarationId_Hybrid FOREIGN KEY(ProductVarationId) REFERENCES dbo.ProductVaration (ProductVarationId),
-CONSTRAINT FK_PowerTrainId_Hybrid FOREIGN KEY(PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId)
-);
-GO
-
-CREATE TABLE dbo.PlugInHybrid (
-PlugInHybridId INT IDENTITY NOT NULL,
-Horsepower DECIMAL,
-Torque DECIMAL,
-EngineSize DECIMAL,
-CylinderConfigId INT,
-CompressorId INT,
-AccelTime DECIMAL,
-TowingCapability DECIMAL,
-AutoStopStart BIT,
-ProductVarationId INT,
-PowerTrainId INT,
-
-CONSTRAINT PK_PlugInHybridId PRIMARY KEY(PlugInHybridId),
-CONSTRAINT FK_CylinderConfigId_PlugInHybrid FOREIGN KEY (CylinderConfigId) REFERENCES dbo.CylinderConfig (CylinderConfigId),
-CONSTRAINT FK_CompressorId_PlugInHybrid FOREIGN KEY(CompressorId) REFERENCES dbo.Compressor (CompressorId),
-CONSTRAINT FK_ProductVarationId_PlugInHybrid FOREIGN KEY(ProductVarationId) REFERENCES dbo.ProductVaration (ProductVarationId),
-CONSTRAINT FK_PowerTrainId_PlugInHybrid FOREIGN KEY(PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId)
-);
-GO
-
-CREATE TABLE dbo.MildHybrid (
-MildHybridId INT IDENTITY NOT NULL,
-Horsepower DECIMAL,
-Torque DECIMAL,
-EngineSize DECIMAL,
-CylinderConfigId INT,
-CompressorId INT,
-AccelTime DECIMAL,
-TowingCapability DECIMAL,
-AutoStopStart BIT,
-ProductVarationId INT,
-PowerTrainId INT,
-
-CONSTRAINT PK_MildHybrid PRIMARY KEY(MildHybridId),
-CONSTRAINT FK_CylinderConfigId_MildHybrid FOREIGN KEY (CylinderConfigId) REFERENCES dbo.CylinderConfig (CylinderConfigId),
-CONSTRAINT FK_CompressorId_MildHybrid FOREIGN KEY(CompressorId) REFERENCES dbo.Compressor (CompressorId),
-CONSTRAINT FK_ProductVarationId_MildHybrid FOREIGN KEY(ProductVarationId) REFERENCES dbo.ProductVaration (ProductVarationId),
-CONSTRAINT FK_PowerTrainId_MildHybrid FOREIGN KEY(PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId)
-);
-GO
-
-CREATE TABLE dbo.Electric (
-ElectricId INT IDENTITY NOT NULL,
-Horsepower DECIMAL,
-Torque DECIMAL,
-EngineSize DECIMAL,
-CylinderConfigId INT,
-CompressorId INT,
-AccelTime DECIMAL,
-TowingCapability DECIMAL,
-AutoStopStart BIT,
-ProductVarationId INT,
-PowerTrainId INT,
-
-CONSTRAINT PK_ElectricId PRIMARY KEY(ElectricId),
-CONSTRAINT FK_CylinderConfigId_Electric FOREIGN KEY (CylinderConfigId) REFERENCES dbo.CylinderConfig (CylinderConfigId),
-CONSTRAINT FK_CompressorId_Electric FOREIGN KEY(CompressorId) REFERENCES dbo.Compressor (CompressorId),
-CONSTRAINT FK_ProductVarationId_Electric FOREIGN KEY(ProductVarationId) REFERENCES dbo.ProductVaration (ProductVarationId),
-CONSTRAINT FK_PowerTrainId_Electric FOREIGN KEY(PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId)
-);
-GO
