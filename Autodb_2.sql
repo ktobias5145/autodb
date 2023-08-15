@@ -26,15 +26,24 @@ CONSTRAINT PK_ManufacturerId PRIMARY KEY(ManufacturerId)
 );
 GO
 
+CREATE TABLE dbo.Model (
+ModelId INT IDENTITY NOT NULL,
+ModelName VARCHAR(150),
+
+CONSTRAINT PK_Model PRIMARY KEY (ModelId)
+);
+GO
+
 CREATE TABLE dbo.Vehicle (
 VehicleId INT IDENTITY NOT NULL,
-ModelName VARCHAR(150),
+ModelId INT,
 ManufacturerId INT,
 BodyStyleId INT,
 
 CONSTRAINT PK_VehicleId PRIMARY KEY (VehicleId),
 CONSTRAINT FK_BodyStyleId FOREIGN KEY (BodyStyleId) REFERENCES dbo.BodyStyle (BodyStyleId),
-CONSTRAINT FK_ManufacturerId FOREIGN KEY (ManufacturerId) REFERENCES dbo.Manufacturer(ManufacturerId)
+CONSTRAINT FK_ManufacturerId FOREIGN KEY (ManufacturerId) REFERENCES dbo.Manufacturer(ManufacturerId),
+CONSTRAINT FK_ModelId FOREIGN KEY (ModelId) REFERENCES dbo.Model(ModelId)
 );
 GO
 
@@ -218,4 +227,3 @@ CONSTRAINT FK_CompressorId_Mechanical FOREIGN KEY(CompressorId) REFERENCES dbo.C
 CONSTRAINT FK_ProductVarationId_Mechanical FOREIGN KEY(ProductVarationId) REFERENCES dbo.ProductVaration (ProductVarationId),
 );
 GO
-
