@@ -1,0 +1,11 @@
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\bin\Debug\DataInsertionTool.exe.config
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\bin\Debug\DataInsertionTool.exe
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\bin\Debug\DataInsertionTool.pdb
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\obj\Debug\DataInsertionTool.csproj.AssemblyReference.cache
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\obj\Debug\DataInsertionTool.csproj.SuggestedBindingRedirects.cache
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\obj\Debug\DataInsertionTool.csproj.CoreCompileInputs.cache
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\obj\Debug\DataInsertionTool.exe
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\obj\Debug\DataInsertionTool.pdb
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Ktobi\Desktop\autodatabase\DataInsertionTool\DataInsertionTool\obj\Debug\DataInsertionTool.csproj.CopyComplete

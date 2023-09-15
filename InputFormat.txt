@@ -1,0 +1,107 @@
+--Single Entry--					? Means Bit//	1 = true	0 = false
+ModelName (Model)			150
+ManufacturerName (Manufacturer)		50
+BodyStyle (BodyStyle)			50
+
+(Vehicle)
+ModelId					Int
+ManufacturerId				Int
+BodyStyleId				Int
+
+--Multiple Entries--
+(TrimLevel)
+TrimLevel				50
+
+(Interior)
+HeatedSeats				?
+VentilatedSeats				?
+PassengerSeatElectricAdjustment		?
+RemoteStart				?
+HeatedSteeringWheel			?
+PaddleShifters				?
+
+(Infotainment)
+ScreenSize				Decimal
+NumSpeakers				Int
+WirelessCharging			?
+AppleCarPlay				?
+AndroidAuto				?
+WifiCapable				?
+
+(Exterior)
+TireSize				50
+RimSize					Int
+HeatedMirrors				?
+SunRoof					?
+NumDoors				?
+
+(Dimensions)
+WheelBase				Decimal
+VehicleLength				Decimal
+Width					Decimal
+Height					Decimal
+VehicleWeight				Decimal
+PassengerCap				Int
+PassengerVolume				Decimal
+CargoVolume				Decimal
+
+(DriveType)
+DriveType				50
+
+(Compressor)
+CompressorType				50
+
+(CylinderConfig)
+CylinderConfig				50
+
+(PowerTrain)
+PowerTrainType				50
+
+(TransmissionType)
+TransmissionType			50
+NumGears				Int
+
+(Gearing)
+TransmissionTypeId			Int
+FinalDriveRation			Decimal
+
+(Economy)
+FuelGrade				Int
+MPGHighway				Decimal
+MPGCity					Decimal
+MPGCombined				Decimal
+LitersPerKMHighway			Decimal
+LitersPerKMCity				Decimal
+LitersPerKMCombined			Decimal
+TankCapacity				Decimal
+BatteryCapacity				Decimal
+VehicleRange				Decimal
+
+(ProductVaration)
+VehicleId				Int
+MSRPCad					Decimal
+MSRPUsd					Decimal
+TrimLevelId				Int
+DimensionId				Int
+ExteriorId				Int
+InfotainmentId				Int
+InteriorId				Int
+PowerTrainId				Int
+GearingId				Int
+EconomyId				Int
+DriveTypeId				Int
+
+(Mechanical)
+Horsepower				Decimal
+Torque					Decimal
+EngineSize				Decimal
+CylinderConfigId			Int
+CompressorId				Int
+AccelTime				Decimal
+Topspeed				Decimal
+TowingCapability			Decimal
+AutoStopStart				?
+BatteryType				Decimal
+MotorVoltage				Decimal
+ProductVarationId			Int
+
