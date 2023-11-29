@@ -1,0 +1,11 @@
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\bin\Debug\AutoDb Data Insertion Tool.exe.config
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\bin\Debug\AutoDb Data Insertion Tool.exe
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\bin\Debug\AutoDb Data Insertion Tool.pdb
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\obj\Debug\AutoDb Data Insertion Tool.csproj.AssemblyReference.cache
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\obj\Debug\AutoDb Data Insertion Tool.csproj.SuggestedBindingRedirects.cache
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\obj\Debug\AutoDb_Data_Insertion_Tool.Window1.resources
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\obj\Debug\AutoDb_Data_Insertion_Tool.Properties.Resources.resources
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\obj\Debug\AutoDb Data Insertion Tool.csproj.GenerateResource.cache
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\obj\Debug\AutoDb Data Insertion Tool.csproj.CoreCompileInputs.cache
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\obj\Debug\AutoDb Data Insertion Tool.exe
+C:\Users\Ktobi\Desktop\autodatabase\AutoDb Data Insertion Tool\AutoDb Data Insertion Tool\obj\Debug\AutoDb Data Insertion Tool.pdb

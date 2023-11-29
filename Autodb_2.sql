@@ -43,9 +43,19 @@ BodyStyleId INT,
 CONSTRAINT PK_VehicleId PRIMARY KEY (VehicleId),
 CONSTRAINT FK_BodyStyleId FOREIGN KEY (BodyStyleId) REFERENCES dbo.BodyStyle (BodyStyleId),
 CONSTRAINT FK_ManufacturerId FOREIGN KEY (ManufacturerId) REFERENCES dbo.Manufacturer(ManufacturerId),
-CONSTRAINT FK_ModelId FOREIGN KEY (ModelId) REFERENCES dbo.Model(ModelId)
+CONSTRAINT FK_ModelId FOREIGN KEY (ModelId) REFERENCES dbo.Model(ModelId),
 );
 GO
+
+CREATE TABLE dbo.Notes
+(
+NoteId INT IDENTITY NOT NULL,
+VehicleId INT,
+NoteContent NVARCHAR(2000),
+
+CONSTRAINT PK_NotesId PRIMARY KEY (NoteId),
+CONSTRAINT FK_VehicleId_Notes FOREIGN KEY (VehicleId) REFERENCES dbo.Vehicle(VehicleId)
+)
 
 CREATE TABLE dbo.Interior (
 InteriorId INT IDENTITY NOT NULL,
@@ -65,6 +75,7 @@ CREATE TABLE dbo.Infotainment (
 InfotainmentId INT IDENTITY NOT NULL,
 ScreenSize DECIMAL,
 NumSpeakers INT,
+NumSubwoofers INT,
 WirelessCharging BIT,
 AppleCarPlay BIT,
 AndroidAuto BIT,
@@ -76,7 +87,8 @@ GO
 
 CREATE TABLE dbo.Exterior (
 ExteriorId INT IDENTITY NOT NULL,
-TireSize VARCHAR(50),
+TireWidth INT,
+TireHeight INT,
 RimSize INT,
 HeatedMirrors BIT,
 SunRoof BIT,
@@ -177,33 +189,6 @@ VehicleRange Decimal,
 CONSTRAINT PK_EcnomyId PRIMARY KEY(EconomyId),
 );
 GO
-CREATE TABLE dbo.ProductVaration (
-ProductVarationId INT IDENTITY NOT NULL,
-VehicleId INT,
-MSRPCad DECIMAL,
-MSRPUsd DECIMAL,
-TrimLevelId INT,
-DimensionId INT,
-ExteriorId INT,
-InfotainmentId INT,
-InteriorId INT,
-PowerTrainId INT,
-GearingId INT,
-EconomyId INT,
-DriveTypeId INT
-
-CONSTRAINT PK_ProductVarationId PRIMARY KEY(ProductVarationId),
-CONSTRAINT FK_VehicleId FOREIGN KEY (VehicleId) REFERENCES dbo.Vehicle (VehicleId),
-CONSTRAINT FK_TrimLevelId FOREIGN KEY(TrimLevelId) REFERENCES dbo.TrimLevel (TrimLevelId),
-CONSTRAINT FK_DimensionId FOREIGN KEY (DimensionId) REFERENCES dbo.Dimensions (DimensionsId),
-CONSTRAINT FK_ExteriorId FOREIGN KEY (ExteriorId) REFERENCES dbo.Exterior (ExteriorId),
-CONSTRAINT FK_InfotainmentId FOREIGN KEY (InfotainmentId) REFERENCES dbo.Infotainment (InfotainmentId),
-CONSTRAINT FK_InteriorId FOREIGN KEY (InteriorId) REFERENCES dbo.Interior (InteriorId),
-CONSTRAINT FK_PowerTrainId FOREIGN KEY (PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId),
-CONSTRAINT FK_GearingId FOREIGN KEY (GearingId) REFERENCES dbo.Gearing (GearingId),
-CONSTRAINT FK_EconomyId FOREIGN KEY(EconomyId) REFERENCES dbo.Economy (EconomyId),
-CONSTRAINT FK_DriveTypeId FOREIGN KEY (DriveTypeId) REFERENCES dbo.DriveType(DriveTypeId),
-);
 
 CREATE TABLE dbo.Mechanical (
 MechanicalId INT IDENTITY NOT NULL,
@@ -218,11 +203,42 @@ TowingCapability DECIMAL,
 AutoStopStart BIT,
 BatteryType VARCHAR(50),
 MotorVoltage DECIMAL,
-ProductVarationId INT,
 
 CONSTRAINT PK_MechanicalId PRIMARY KEY(MechanicalId),
 CONSTRAINT FK_CylinderConfigId_Mechanical FOREIGN KEY (CylinderConfigId) REFERENCES dbo.CylinderConfig (CylinderConfigId),
 CONSTRAINT FK_CompressorId_Mechanical FOREIGN KEY(CompressorId) REFERENCES dbo.Compressor (CompressorId),
-CONSTRAINT FK_ProductVarationId_Mechanical FOREIGN KEY(ProductVarationId) REFERENCES dbo.ProductVaration (ProductVarationId),
 );
 GO
+
+CREATE TABLE dbo.ProductVaration (
+ProductVarationId INT IDENTITY NOT NULL,
+VehicleId INT,
+ProductYear INT,
+MSRPCad DECIMAL,
+MSRPUsd DECIMAL,
+PictureFile NVARCHAR(1000),
+PictureCitation NVARCHAR(1000),
+TrimLevelId INT,
+DimensionId INT,
+ExteriorId INT,
+InfotainmentId INT,
+InteriorId INT,
+PowerTrainId INT,
+GearingId INT,
+EconomyId INT,
+DriveTypeId INT,
+MechanicalId INT,
+
+CONSTRAINT PK_ProductVarationId PRIMARY KEY(ProductVarationId),
+CONSTRAINT FK_VehicleId FOREIGN KEY (VehicleId) REFERENCES dbo.Vehicle (VehicleId),
+CONSTRAINT FK_TrimLevelId FOREIGN KEY(TrimLevelId) REFERENCES dbo.TrimLevel (TrimLevelId),
+CONSTRAINT FK_DimensionId FOREIGN KEY (DimensionId) REFERENCES dbo.Dimensions (DimensionsId),
+CONSTRAINT FK_ExteriorId FOREIGN KEY (ExteriorId) REFERENCES dbo.Exterior (ExteriorId),
+CONSTRAINT FK_InfotainmentId FOREIGN KEY (InfotainmentId) REFERENCES dbo.Infotainment (InfotainmentId),
+CONSTRAINT FK_InteriorId FOREIGN KEY (InteriorId) REFERENCES dbo.Interior (InteriorId),
+CONSTRAINT FK_PowerTrainId FOREIGN KEY (PowerTrainId) REFERENCES dbo.PowerTrain (PowerTrainId),
+CONSTRAINT FK_GearingId FOREIGN KEY (GearingId) REFERENCES dbo.Gearing (GearingId),
+CONSTRAINT FK_EconomyId FOREIGN KEY(EconomyId) REFERENCES dbo.Economy (EconomyId),
+CONSTRAINT FK_DriveTypeId FOREIGN KEY (DriveTypeId) REFERENCES dbo.DriveType(DriveTypeId),
+CONSTRAINT FK_MechanicalId FOREIGN KEY (MechanicalId) REFERENCES dbo.Mechanical (MechanicalId)
+);

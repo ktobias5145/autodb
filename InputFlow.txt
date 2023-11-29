@@ -1,0 +1,163 @@
+---------------------------------------------------------------
+TrimLevel
+		TrimLevel				String
+---------------------------------------------------------------
+Dimensions
+		WheelBase				Double
+		VehicleLength				Double
+		Height					Double
+		Width					Double
+		VehicleWeight				Double
+		PassengerCap				Int
+		PassengerVolume				Double
+		CargoVolume				Double
+---------------------------------------------------------------
+Exterior
+		TireWidth				Int
+		TireHeight				Int
+		RimSize					Int
+		HeatedMirrors				Bool
+		SunRoof					Bool
+		NumDoors				Int
+---------------------------------------------------------------
+Infotainment
+		ScreenSize				Double
+		NumSpeakers				Int
+		NumSubwoofers				Int
+		WirelessCharging			Bool
+		AppleCarPlay				Bool
+		AndroidAuto				Bool
+		WifiCapable				Bool
+---------------------------------------------------------------
+Interior
+		HeatedSeats				Bool
+		VentilatedSeats				Bool
+		DriverSeatElectricAdjustment		Bool
+		PassengerSeatElectricAdjustment		Bool
+		RemoteStart				Bool
+		HeatedSteeringWheel			Bool
+		PaddleShifters				Bool
+---------------------------------------------------------------
+PowerTrain
+		PowerTrainType				String
+---------------------------------------------------------------
+TransmissionType
+		TransmissionType			String
+		NumGears				Int
+---------------------------------------------------------------
+Gearing
+		TransmissionTypeId			Int
+		FinalDriveRation			Double
+---------------------------------------------------------------
+Economy
+		FuelGrade				Int
+		MPGHighway				Double
+		MPGCity					Double
+		MPGCombined				Double
+		LitersPerKMHighway			Double
+		LitersPerKMCity				Double
+		LitersPerKMCombined			Double
+		TankCapacity				Double
+		BatteryCapacity				Double
+		VehicleRange				Double
+---------------------------------------------------------------
+DriveType
+		DriveType				String
+---------------------------------------------------------------
+Mechanical
+		Horsepower				Double
+		Torque					Double
+		EngineSize				Double
+		CylinderConfigId			Int
+		CompressorId				Int
+		AccelTime				Double
+		Topspeed				Double
+		TowingCapability			Double
+		AutoStopStart				Bool
+		BatteryType				String
+		MotorVoltage				Double
+---------------------------------------------------------------
+ProductVaration
+		VehicleId				Int
+		ProductYear				Int
+		MSRPCad					Double
+		MSRPUsd					Double
+		TrimLevelId 				Int
+		DimensionId				Int
+		ExteriorId 				Int
+		InfotainmentId 				Int
+		InteriorId 				Int
+		PowerTrainId 				Int
+		GearingId 				Int
+		EconomyId 				Int
+		DriveTypeId 				Int
+		MechanicalId 				Int
+
+WheelBaseTextBox
+HeightTextBox
+VehicleWeightTextBox
+PassengerVolumeTextBox
+TireSizeTextBox
+HeatedMirrorsTextBox
+NumDoorsTextBox
+NumSpeakersTextBox
+AppleCarPlayTextBox
+WifiCapableTextBox
+VentilatedSeatsTextBox
+PassElectricTextBox
+HeatWheelTextBox
+PowerTrainTypeTextBox
+NumGearsTextBox
+FinalDriveRationTextBox
+MPGHighwayTextBox
+MPGCombinedTextBox
+LitersPerKMCityTextBox
+TankCapacityTextBox
+VehicleRangeTextBox
+HorsepowerTextBox
+EngineSizeTextBox
+CompressorIdTextBox
+TopspeedTextBox
+AutoStopStartTextBox
+MotorVoltageTextBox
+MSRPCadTextBox
+TrimLevelIdTextBox
+ExteriorIdTextBox
+InteriorIdTextBox
+GearingIdTextBox
+DriveTypeIdTextBox
+
+        //Bottom Right Text Box
+VehicleLengthTextBox
+WidthTextBox
+PassengerCapTextBox
+CargoVolumeTextBox
+RimSizeTextBox
+SunRoofTextBox
+ScreenSizeTextBox
+WirelessChargingTextBox
+AndroidAutoTextBox
+HeatedSeatsTextBox
+DriverSeatElectricTextBox
+RemoteStartTextBox
+PaddleShiftersTextBox
+TransmissionTypeTextBox
+TransmissionTypeIdTextBox
+FuelGradeTextBox
+MPGCityTextBox
+LitersPerKMHighwayTextBox
+LitersPerKMCombinedTextBox
+BatteryCapacityTextBox
+DriveTypeTextBox
+TorqueTextBox
+CylinderConfigIdTextBox
+AccelTimeTextBox
+TowingCapabilityTextBox
+BatteryTypeTextBox
+VehicleIdTextBox
+MSRPUsdTextBox
+DimensionIdTextBox
+InfotainmentIdTextBox
+PowerTrainIdTextBox
+EconomyIdTextBox
+MechanicalIdTextBox
